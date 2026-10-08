@@ -896,6 +896,86 @@ class STEMController(Observable.Observable):
 
     # end high level commands
 
+    def _get_all_scan_matrices(self) -> TryValue[set[str]]:
+        """Return a set of all scan matrices available on the microscope.
+
+        Returns:
+            set[str]: A set of all scan matrices available on the microscope.
+        """
+        raise NotImplementedError()
+
+    def _get_scan_matrix(self) -> TryValue[str]:
+        """Return the name of the current scan matrix.
+
+        Returns:
+            str: The name of the current scan matrix.
+        """
+        raise NotImplementedError()
+
+    def _set_scan_matrix(self, matrix: str) -> None:
+        """Set the current scan matrix.
+
+        Args:
+            matrix (str): The name of the scan matrix to set.
+        """
+        raise NotImplementedError()
+
+    def _get_all_scan_vectors(self) -> TryValue[typing.Mapping[int, str]]:
+        """Return the available scan vectors, indexed by vector index.
+
+        Returns:
+            TryValue[Mapping[int, str]]: Vector indices mapped to their display names.
+        """
+        raise NotImplementedError()
+
+    def _get_x_scan_vector(self) -> TryValue[int]:
+        """Return the index of the current scan vector for the x-axis.
+
+        Returns:
+            TryValue[int]: The current x-axis scan vector index.
+        """
+        raise NotImplementedError()
+
+    def _get_y_scan_vector(self) -> TryValue[int]:
+        """Return the index of the current scan vector for the y-axis.
+
+        Returns:
+            TryValue[int]: The current y-axis scan vector index.
+        """
+        raise NotImplementedError()
+
+    def _set_x_scan_vector(self, vector_index: int) -> None:
+        """Set the x-axis scan vector by index.
+
+        Args:
+            vector_index: Index of the scan vector to select for the x-axis.
+        """
+        raise NotImplementedError()
+
+    def _set_y_scan_vector(self, vector_index: int) -> None:
+        """Set the y-axis scan vector by index.
+
+        Args:
+            vector_index: Index of the scan vector to select for the y-axis.
+        """
+        raise NotImplementedError()
+
+    def _get_scan_enabled(self) -> TryValue[bool]:
+        """Return whether the scan is enabled.
+
+        Returns:
+            bool: True if the scan is enabled, False otherwise.
+        """
+        raise NotImplementedError()
+
+    def _set_scan_enabled(self, enabled: bool) -> None:
+        """Set whether the scan is enabled.
+
+        Args:
+            enabled (bool): True to enable the scan, False to disable it.
+        """
+        raise NotImplementedError()
+
 
 class AbstractGraphicSetHandler(abc.ABC):
     """Handle callbacks from the graphic set controller to the model."""
